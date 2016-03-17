@@ -8,8 +8,8 @@ document.addEventListener('DOMContentLoaded', function(event){
     var query='https://api.flickr.com/services/rest/?format=json&method=flickr.photos.search&api_key=' + API_KEY + '&tags=' + userSearch.value;
     $.ajax({
       url: query,
-      dataType: 'jsonp',        //required or will fail
-      jsonp: 'jsoncallback',    //required or will fail
+      dataType: 'jsonp',              //required or will fail
+      jsonp: 'jsoncallback',          //required or will fail
       success: function(response){
         console.log(response);
 
@@ -21,9 +21,9 @@ document.addEventListener('DOMContentLoaded', function(event){
         templateContainer.innerHTML = html;
 
 
-      }
-    }) //end photo search ajax
+      }//end success
+    })//end photo search ajax
 
-  }); //end click event
+  });//end click event
 
-}); //end document load
+});//end document load

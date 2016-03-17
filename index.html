@@ -24,13 +24,22 @@
       <div id="photos-container"></div>
       <script id="photos-template" type="text/x-handlebars-template">
         {{#each this}}
-        <h1> {{title}} </h1>
+          <h1> {{title}}  </h1>
+          <img src="https://farm{{farm}}.staticflickr.com/{{server}}/{{id}}_{{secret}}_m.jpg">
+          <p>  {{farm}}   </p>
+          <p>  {{server}} </p>
+          <p>  {{id}}     </p>
+          <p>  {{secret}} </p>
         {{/each}}
 
       </script>
 
 
-
+      <!-- farm-id: 1
+      server-id: 2
+      photo-id: 1418878
+      secret: 1e92283336
+      size: m -->
 
 
     </div>
