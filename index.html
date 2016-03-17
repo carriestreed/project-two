@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="keys.js"></script>
+    <script src="app.js"></script>
+    <title></title>
+  </head>
+  <body>
+    <div class="container">
+
+      <h1>Title goes here</h1>
+
+      <div class="form-container">
+        <form>
+          <input id="user-search" placeholder="choose a destination">
+          <button id="user-sub" type="button">Submit</button>
+        </form>
+      </div>
+
+
+      <div id="photos-container"></div>
+      <script id="photos-template" type="text/x-handlebars-template">
+        {{#each this}}
+        <h1> {{title}} </h1>
+        {{/each}}
+
+      </script>
+
+
+
+
+
+    </div>
+  </body>
+</html>
