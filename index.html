@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="styles.css">
-    <link href='https://fonts.googleapis.com/css?family=Dosis' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=News+Cycle' rel='stylesheet' type='text/css'>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.js"></script>
     <script src="keys.js"></script>
@@ -12,27 +12,38 @@
   </head>
   <body>
     <header>
-      <p>Title goes here</p>
+      <p>Trekk</p>
     </header>
 
     <div id="container">
 
-      <div class="homeBG"> </div>
+      <div class="homeBG">
+        <div class="form-container">
+          <form action="gallery.html">
+            <input id="user-search" placeholder="choose a destination">
+            <button id="user-sub" type="button">go</button>
+          </form>
+        </div>
+      </div>
 
-      <div class="form-container">
-        <form action="gallery.html">
-          <input id="user-search" placeholder="choose a destination">
-          <button id="user-sub" type="button">go</button>
-        </form>
+      <div id="photos-container"></div>
+        <script id="photos-template" type="text/x-handlebars-template">
+          {{#each this}}
+            <img id="{{id}}" src="https://farm{{farm}}.staticflickr.com/{{server}}/{{id}}_{{secret}}_m.jpg">
+          {{/each}}
+        </script>
       </div>
 
 
-      <div id="photos-container"></div>
-      <script id="photos-template" type="text/x-handlebars-template">
-        {{#each this}}
-          <img src="https://farm{{farm}}.staticflickr.com/{{server}}/{{id}}_{{secret}}_m.jpg">
-        {{/each}}
-      </script>
+      <div id="featured-container">
+        <h2>Some other title here</h2>
+        <br><br>
+        <!-- <button type="image" class="imgBtn" id="iceland" value="iceland"></div>
+        <button type="image" class="imgBtn" id="tokyo" value="tokyo"></div>
+        <button type="image" class="imgBtn" id="bolivia" value="bolivia"></div>
+        <button type="image" class="imgBtn" id="indonesia" value="indonesia"></div>
+        <button type="image" class="imgBtn" id="peru" value="peru"></div> -->
+      </div>
 
 
 

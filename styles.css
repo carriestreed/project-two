@@ -1,7 +1,7 @@
 * {
   margin: 0;
 	padding: 0;
-  font-family: 'Dosis', monospace;
+  font-family: 'News Cycle', monospace;
 }
 
 header {
@@ -12,16 +12,20 @@ header {
   height: 50px;
   background-color: #1cbcb5;
   font-size: 25px;
+  font-weight: bolder;
   line-height: 50px;
   padding-left: 20px;
   color: #fff;
 
-  /*gradient background*/
-  background: #1cbcb5; /* For browsers that do not support gradients */
-  background: -webkit-linear-gradient(left top, #1888BD, #105779); /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(bottom right, #1888BD, #105779); /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(bottom right, #1888BD, #105779); /* For Firefox 3.6 to 15 */
-  background: linear-gradient(to bottom right, #1888BD, #105779); /* Standard syntax */
+  /*gradient background from css-tricks*/
+  /* Safari 4-5, Chrome 1-9 */
+  background: -webkit-gradient(radial, center center, 0, center center, 960, from(#9eaf1d), to(#6e933b));
+  /* Safari 5.1+, Chrome 10+ */
+  background: -webkit-radial-gradient(circle, #9eaf1d, #6e933b);
+  /* Firefox 3.6+ */
+  background: -moz-radial-gradient(circle, #9eaf1d, #6e933b);
+  /* IE 10 */
+  background: -ms-radial-gradient(circle, #9eaf1d, #6e933b);
 }
 
 #container {
@@ -30,7 +34,7 @@ header {
 }
 
 .form-container {
-  position: fixed;
+  position: relative;
   left: 150px;
   width: 70%;
   top: 200px;
@@ -46,18 +50,32 @@ header {
   background-repeat: no-repeat;
 }
 
+.featured {
+  max-width: 90%;
+  margin: auto;
+  text-align: center;
+  padding-top: 40px;
+}
+
+h2 {
+  font-size: 40px;
+  color: #707070;
+  font-weight: 100;
+}
+
 input {
   min-width: 80%;
   padding: 10px;
   outline: none;
   border: 1px solid #ccc;
+  background-color: rgba(255,255,255,.9);
   font-size: 30px;
 }
 
 button {
   min-width: 15%;
   padding: 10px;
-  background-color: #fff;
+  background-color: rgba(255,255,255,.9);
   border: 1px solid #ccc;
   outline: none;
   font-size: 30px;
@@ -78,6 +96,13 @@ button:hover {
 }
 
 #photos-container > img {
-  flex-grow: 2;
+  flex-grow: 1;
   margin: 10px;
+}
+
+
+#featured-container {
+  width: 90%;
+  text-align: center;
+  margin: auto;
 }
