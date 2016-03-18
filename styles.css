@@ -157,15 +157,19 @@ img {
   background-color: #bfd328;
   color: white;
 }
-
+#photo-popup img {
+  width: 70%;
+}
 #photo-popup > .lgPhoto {
   text-align: center;
   padding-top: 10px;
 }
-
-#photo-popup img {
-  width: 70%;
+#photo-popup > .photoDesc {
+  background-color: #fff;
+  width: 90%;
+  height: 500px;
 }
+
 
 #featured-container {
   width: 90%;

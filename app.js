@@ -64,20 +64,9 @@ document.addEventListener('DOMContentLoaded', function(event){
         }//end for loop
 
         //generates popup window content
-
         function generateContent(el){
           console.log('passed in', el);
           var photoId = el[0].id;
-
-          //generate close button
-          document.querySelector('#photo-popup').style.display = 'block';
-          document.querySelector('#photo-popup').innerHTML ='<span> x </span>';
-
-          //close window on click
-          document.querySelector('span').addEventListener('click', function(){
-            console.log('clicked');
-            document.querySelector('#photo-popup').style.display = 'none';
-          });
 
           $.ajax({
             url: 'https://api.flickr.com/services/rest/?format=json&nojsoncallback=1&method=flickr.photos.getSizes&api_key=' + API_KEY + '&photo_id=' + photoId,
@@ -92,6 +81,15 @@ document.addEventListener('DOMContentLoaded', function(event){
               var templateContainer = document.querySelector('#photo-popup');
               var html = template(response.sizes.size[7]);
               templateContainer.innerHTML = html;
+
+              //displays popup window
+              document.querySelector('#photo-popup').style.display = 'block';
+
+              //close window on click
+              document.querySelector('span').addEventListener('click', function(){
+                console.log('clicked');
+                document.querySelector('#photo-popup').style.display = 'none';
+              });
 
 
 
