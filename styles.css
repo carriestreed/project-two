@@ -130,6 +130,7 @@ img {
 #photo-popup {
   display: none;
   position: fixed;
+  overflow-y: auto;
   top: 0;
   left: 0;
   width: 100%;
@@ -138,7 +139,7 @@ img {
   z-index: 200;
 }
 
-#photo-popup span {
+#photo-popup span { /* close box */
   position: fixed;
   right: 10px;
   top: -8px;
@@ -162,14 +163,13 @@ img {
 }
 #photo-popup > .lgPhoto {
   text-align: center;
-  padding-top: 10px;
+  padding-top: 20px;
 }
 #photo-popup > .photoDesc {
   background-color: #fff;
-  width: 90%;
-  height: 500px;
+  min-height: 500px;
+  margin-top: 20px;
 }
-
 
 #featured-container {
   width: 90%;
