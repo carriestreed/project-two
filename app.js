@@ -1,29 +1,15 @@
 document.addEventListener('DOMContentLoaded', function(event){
 
-  // //query for homepage featured galleries
-  // var query='https://api.flickr.com/services/rest/?format=json&nojsoncallback=1&method=flickr.photos.search&api_key=' + API_KEY + '&sort=interestingness-desc';
-  // $.ajax({
-  //   url: query,
-  //   dataType: 'json',
-  //   success: function(response){
-  //     console.log(response);
-  //
-  //     //handlebars
-  //     var source = document.querySelector('#photos-template').innerHTML;
-  //     var template = Handlebars.compile(source);
-  //     var templateContainer = document.querySelector('#photos-container');
-  //     var html = template(response.photos.photo);
-  //     templateContainer.innerHTML = html;
-  //
-  //   }//end success
-  // })//end photo search ajax
-
-
 
   //beginning on click event
   document.querySelector('#user-sub').addEventListener('click', function(){
 
     var userSearch = document.querySelector('#user-search');
+
+    //click logo to reload
+    document.querySelector('#logo').addEventListener('click', function(){
+      location.reload();
+    });
 
     //move form box to header & resize
     var moveInput = document.querySelector('.form-container');
@@ -43,20 +29,19 @@ document.addEventListener('DOMContentLoaded', function(event){
 
     var buttonAdj = document.querySelector('#user-sub');
     buttonAdj.style.fontSize = '12px';
-    buttonAdj.style.minWidth = '10%';
+    buttonAdj.style.minWidth = '6%';
     buttonAdj.style.padding = '5px';
 
 
     //hide main homepage background
-    var hideMainImg = document.querySelector('.homeBG').style.display = 'none';
+    document.querySelector('.homeBG').style.display = 'none';
 
     //hide featured galleries
-    var hideGalleries = document.querySelector('#featured-container').style.display = 'none';
+    document.querySelector('#featured-container').style.display = 'none';
 
     //query for photo search
-    var query='https://api.flickr.com/services/rest/?format=json&nojsoncallback=1&method=flickr.photos.search&api_key=' + API_KEY + '&sort=interestingness-desc&group_id=41425956%40N00&tags=' + userSearch.value;
     $.ajax({
-      url: query,
+      url: 'https://api.flickr.com/services/rest/?format=json&nojsoncallback=1&method=flickr.photos.search&api_key=' + API_KEY + '&sort=interestingness-desc&group_id=41425956%40N00&tags=' + userSearch.value,
       dataType: 'json',
       success: function(response){
         console.log(response);
@@ -73,24 +58,46 @@ document.addEventListener('DOMContentLoaded', function(event){
         for (var i = 0; i < photoLocation.length; i++){
           document.getElementById(photoLocation[i].id).addEventListener('click', function(){
             console.log(this, 'clicked');
-
-            document.querySelector('#photo-popup').style.display = 'block';
-            document.querySelector('#photo-popup').innerHTML =
-              '<span>'
-              + 'x'
-              + '</span><h1>'
-              + 'Popping up!'
-              + '</h1>';
-
-            //close window on click
-            document.querySelector('span').onclick = function(){
-              console.log('clicked');
-              document.querySelector('#photo-popup').style.display = 'none';
-            };
-
-
+            var photoObject = [this];
+            generateContent(photoObject);
           });//end click event
         }//end for loop
+
+        //generates popup window content
+
+        function generateContent(el){
+          console.log('passed in', el);
+          var photoId = el[0].id;
+
+          //generate close button
+          document.querySelector('#photo-popup').style.display = 'block';
+          document.querySelector('#photo-popup').innerHTML ='<span> x </span>';
+
+          //close window on click
+          document.querySelector('span').addEventListener('click', function(){
+            console.log('clicked');
+            document.querySelector('#photo-popup').style.display = 'none';
+          });
+
+          $.ajax({
+            url: 'https://api.flickr.com/services/rest/?format=json&nojsoncallback=1&method=flickr.photos.getSizes&api_key=' + API_KEY + '&photo_id=' + photoId,
+            dataType: 'json',
+            success: function(response){
+              console.log(response);
+              console.log(response.sizes.size)
+
+              //handlebars
+              var source = document.querySelector('#popup-template').innerHTML;
+              var template = Handlebars.compile(source);
+              var templateContainer = document.querySelector('#photo-popup');
+              var html = template(response.sizes.size[7]);
+              templateContainer.innerHTML = html;
+
+
+
+            }//end success
+          });//end popup window ajax
+        }//end generate content function
 
 
 

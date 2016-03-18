@@ -33,21 +33,23 @@ header {
   margin-top: 50px;
 }
 
-.form-container {
-  position: relative;
-  left: 150px;
-  width: 70%;
-  top: 200px;
-  text-align: center;
-  /*border: 10px solid rgba(0,0,0,.1);*/
-}
-
 .homeBG {
   width: 100%;
   height: 500px;
+  margin: auto;
   background-size: cover;
   background-image: url('http://daily.jstor.org/wp-content/uploads/2015/08/Solar_de_Uyuni_1050x700.jpg');
   background-repeat: no-repeat;
+}
+
+.homeBG p {
+  position: relative;
+  top: 130px;
+  font-size: 35px;
+  text-align: center;
+  margin: 30px;
+  color: #fff;
+  text-shadow: 0px 2px 8px rgba(0,0,0,.5);
 }
 
 .featured {
@@ -61,6 +63,14 @@ h2 {
   font-size: 40px;
   color: #707070;
   font-weight: 100;
+}
+
+.form-container {
+  position: relative;
+  left: 150px;
+  width: 70%;
+  top: 150px;
+  z-index: 100;
 }
 
 input {
@@ -81,24 +91,40 @@ button {
   outline: none;
   font-size: 30px;
   border-radius: 5px;
+  cursor: pointer;
 }
 button:hover {
-  background-color: #96dae0;
+  background-color: #bfd328;
   color: #fff;
+  border: 1px solid #8c9d1c;
 }
 
-.flexbox-container {
-  display:flex;
+img {
+  cursor: pointer;
 }
 
 #photos-container {
-  display: flex;
-  flex-wrap: wrap;
+  /*columns from css-tricks*/
+  padding-top: 10px;
+  -webkit-columns: 3 300px;
+  -moz-columns: 3 300px;
+  columns: 3 300px;
+  -webkit-column-gap: 1px;
+  -moz-column-gap: 1px;
+  column-gap: 1px;
 }
 
-#photos-container > img {
-  flex-grow: 1;
-  margin: 10px;
+#photos-container > div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#photos-container > div > img {
+  max-width: 100%;
+  height: auto;
+  margin: 6px;
+  align-self: center;
 }
 
 #photo-popup {
@@ -108,7 +134,7 @@ button:hover {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(225,224,223,.9);
+  background-color: rgba(225,224,223,.95);
   z-index: 200;
 }
 
@@ -124,15 +150,29 @@ button:hover {
   font-size: 30px;
   font-weight: 900;
   border-radius: 5px;
+  cursor: pointer;
+  z-index: 200;
 }
 #photo-popup span:hover {
   background-color: #bfd328;
   color: white;
 }
 
+#photo-popup > .lgPhoto {
+  text-align: center;
+  padding-top: 10px;
+}
+
+#photo-popup img {
+  width: 70%;
+}
 
 #featured-container {
   width: 90%;
   text-align: center;
   margin: auto;
+}
+
+header #logo {
+  cursor: pointer;
 }

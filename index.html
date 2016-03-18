@@ -11,13 +11,15 @@
     <title></title>
   </head>
   <body>
+
     <header>
-      <p>Trekk</p>
+      <p id="logo">app name</p>
     </header>
 
     <div id="container">
 
       <div class="homeBG">
+        <p>Some title should go here</p>
         <div class="form-container">
           <form action="gallery.html">
             <input id="user-search" placeholder="choose a destination">
@@ -29,12 +31,16 @@
       <div id="photos-container"></div>
       <script id="photos-template" type="text/x-handlebars-template">
         {{#each this}}
-          <img id="{{id}}" src="https://farm{{farm}}.staticflickr.com/{{server}}/{{id}}_{{secret}}_m.jpg">
+          <div class="photo-box">
+            <img id="{{id}}" src="https://farm{{farm}}.staticflickr.com/{{server}}/{{id}}_{{secret}}_z.jpg">
+          </div>
         {{/each}}
       </script>
 
-      <div id="photo-popup">
-      </div>
+      <div id="photo-popup"></div>
+      <script id="popup-template" type="text/x-handlebars-template">
+          <div class="lgPhoto"><img src="{{source}}"></div>
+      </script>
 
 
       <div id="featured-container">
