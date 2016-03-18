@@ -154,21 +154,22 @@ img {
   cursor: pointer;
   z-index: 200;
 }
-#photo-popup span:hover {
+#photo-popup span:hover { /* close box hover */
   background-color: #bfd328;
-  color: white;
+  color: #fff;
 }
 #photo-popup img {
   width: 70%;
 }
-#photo-popup > .lgPhoto {
+#photo-popup > .lg-photo {
   text-align: center;
   padding-top: 20px;
 }
-#photo-popup > .photoDesc {
+#photo-popup > #photo-desc {
   background-color: #fff;
   min-height: 500px;
   margin-top: 20px;
+  padding: 20px;
 }
 
 #featured-container {

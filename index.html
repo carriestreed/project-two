@@ -38,13 +38,24 @@
       </script>
 
       <div id="photo-popup"></div>
+
       <script id="popup-template" type="text/x-handlebars-template">
         <span> x </span>
-        <div class="lgPhoto"><img src="{{source}}"></div>
+        <div class="lg-photo"><img src="{{source}}"></div>
+        <div id="photo-desc"></div>
       </script>
 
-      <div id="content-container">
-      <div class="photoDesc"></div>
+      <script id="photo-desc-temp" type="text/x-handlebars-template">
+        <h3>{{title._content}}</h3>
+        {{#if owner.realname}}
+          <p>Photo by {{owner.realname}}</p>
+        {{else}}
+          <p>Photo by {{owner.username}}
+        {{/if}}
+        <p>Taken on {{dates.taken}}</p>
+        <br><br>
+        <p>{{{description._content}}}</p>
+      </script>
 
       <div id="featured-container">
         <h2>Some other title here</h2>

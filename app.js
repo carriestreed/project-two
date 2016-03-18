@@ -98,8 +98,18 @@ document.addEventListener('DOMContentLoaded', function(event){
       dataType: 'json',
       success: function(response){
         console.log(response);
-        console.log(response.photo.description);
+        console.log(response.photo.description._content);
         console.log(response.photo.title);
+        console.log(response.photo.owner);
+        console.log(response.photo.dates.taken);
+
+        //handlebars
+        var source = document.querySelector('#photo-desc-temp').innerHTML;
+        var template = Handlebars.compile(source);
+        var templateContainer = document.querySelector('#photo-desc');
+        var html = template(response.photo);
+        templateContainer.innerHTML = html;
+
       }//end success
     });//end ajax call for descriptions
 
@@ -110,3 +120,10 @@ document.addEventListener('DOMContentLoaded', function(event){
 
 
 });//end document load
+
+//TODO
+//pause scrolling behind div popup window
+//attempt to connect google auto fill
+//geo tag photos onto a map
+//link to other tags on popup window
+//display amount of views
