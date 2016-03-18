@@ -27,11 +27,13 @@
       </div>
 
       <div id="photos-container"></div>
-        <script id="photos-template" type="text/x-handlebars-template">
-          {{#each this}}
-            <img id="{{id}}" src="https://farm{{farm}}.staticflickr.com/{{server}}/{{id}}_{{secret}}_m.jpg">
-          {{/each}}
-        </script>
+      <script id="photos-template" type="text/x-handlebars-template">
+        {{#each this}}
+          <img id="{{id}}" src="https://farm{{farm}}.staticflickr.com/{{server}}/{{id}}_{{secret}}_m.jpg">
+        {{/each}}
+      </script>
+
+      <div id="photo-popup">
       </div>
 
 

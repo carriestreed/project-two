@@ -20,7 +20,6 @@ document.addEventListener('DOMContentLoaded', function(event){
 
 
 
-
   //beginning on click event
   document.querySelector('#user-sub').addEventListener('click', function(){
 
@@ -30,8 +29,10 @@ document.addEventListener('DOMContentLoaded', function(event){
     var moveInput = document.querySelector('.form-container');
     moveInput.style.position = 'relative';
     moveInput.style.top = '-55px';
-    moveInput.style.right = '400px';
+    moveInput.style.left = '0px';
+    moveInput.style.right = '10px';
     moveInput.style.zIndex = '200';
+    moveInput.style.width = '96%';
     moveInput.style.textAlign = 'right';
     document.querySelector('header').appendChild(moveInput);
 
@@ -53,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function(event){
     var hideGalleries = document.querySelector('#featured-container').style.display = 'none';
 
     //query for photo search
-    var query='https://api.flickr.com/services/rest/?format=json&nojsoncallback=1&method=flickr.photos.search&api_key=' + API_KEY + '&sort=interestingness-desc&tags=' + userSearch.value;
+    var query='https://api.flickr.com/services/rest/?format=json&nojsoncallback=1&method=flickr.photos.search&api_key=' + API_KEY + '&sort=interestingness-desc&group_id=41425956%40N00&tags=' + userSearch.value;
     $.ajax({
       url: query,
       dataType: 'json',
@@ -72,8 +73,24 @@ document.addEventListener('DOMContentLoaded', function(event){
         for (var i = 0; i < photoLocation.length; i++){
           document.getElementById(photoLocation[i].id).addEventListener('click', function(){
             console.log(this, 'clicked');
-          });
-        }
+
+            document.querySelector('#photo-popup').style.display = 'block';
+            document.querySelector('#photo-popup').innerHTML =
+              '<span>'
+              + 'x'
+              + '</span><h1>'
+              + 'Popping up!'
+              + '</h1>';
+
+            //close window on click
+            document.querySelector('span').onclick = function(){
+              console.log('clicked');
+              document.querySelector('#photo-popup').style.display = 'none';
+            };
+
+
+          });//end click event
+        }//end for loop
 
 
 
