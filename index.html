@@ -13,13 +13,15 @@
   <body>
 
     <header>
-      <p id="logo">app name</p>
+      <p id="logo">wander</p>
     </header>
 
     <div id="container">
 
+
+      <!-- homepage  -->
       <div class="homeBG">
-        <p>Some title should go here</p>
+        <p>Picture yourself, everywhere</p>
         <div class="form-container">
           <form action="gallery.html">
             <input id="user-search" placeholder="choose a destination">
@@ -28,6 +30,8 @@
         </div>
       </div>
 
+
+      <!-- photo results gallery -->
       <div id="photos-container"></div>
       <script id="photos-template" type="text/x-handlebars-template">
         {{#each this}}
@@ -37,38 +41,60 @@
         {{/each}}
       </script>
 
-      <div id="photo-popup"></div>
 
+      <!-- photo pop up window w/description -->
+      <div id="photo-popup"></div>
       <script id="popup-template" type="text/x-handlebars-template">
         <span> x </span>
         <div class="lg-photo"><img src="{{source}}"></div>
-        <div id="photo-desc"></div>
+        <div class="desc-container">
+          <div id="map"></div>
+          <div id="photo-desc"></div>
+        </div>
       </script>
 
+
+      <!-- handlebars for description -->
       <script id="photo-desc-temp" type="text/x-handlebars-template">
         <h3>{{title._content}}</h3>
         {{#if owner.realname}}
           <p>Photo by {{owner.realname}}</p>
-        {{else}}
+          {{else}}
           <p>Photo by {{owner.username}}
         {{/if}}
         <p>Taken on {{dates.taken}}</p>
-        <br><br>
+        <br>
         <p>{{{description._content}}}</p>
       </script>
 
+
+      <!-- handlebars for map -->
+      <script id="map-temp" type="text/x-handlebars-template">
+        {{#if location}}
+          <img src="https://maps.googleapis.com/maps/api/staticmap?center={{location.latitude}},{{location.longitude}}&zoom=13&size=640x640&scale=2">
+          {{else}}
+          <img src="images/nomap.gif">
+        {{/if}}
+      </script>
+
+
+      <!-- homepage featured section -->
       <div id="featured-container">
-        <h2>Some other title here</h2>
+        <h2>Featured Places</h2>
         <br><br>
-        <!-- <button type="image" class="imgBtn" id="iceland" value="iceland"></div>
-        <button type="image" class="imgBtn" id="tokyo" value="tokyo"></div>
-        <button type="image" class="imgBtn" id="bolivia" value="bolivia"></div>
-        <button type="image" class="imgBtn" id="indonesia" value="indonesia"></div>
-        <button type="image" class="imgBtn" id="peru" value="peru"></div> -->
+        <div class=featured-flex>
+          <div id="namibia" class="featured-place"> Namibia </div>
+          <div id="bolivia" class="featured-place"> Bolivia </div>
+          <div id="peru" class="featured-place"> Peru </div>
+          <div id="tokyo" class="featured-place"> Tokyo </div>
+          <div id="singapore" class="featured-place"> Singapore </div>
+          <div id="iceland" class="featured-place"> Iceland </div>
+        </div>
       </div>
 
 
 
     </div>
+
   </body>
 </html>

@@ -1,12 +1,12 @@
 * {
   margin: 0;
 	padding: 0;
-  font-family: 'News Cycle', monospace;
+  font-family: 'News Cycle', arial;
 }
 
 header {
   position: fixed;
-  z-index: 100;
+  z-index: 200;
   top: 0;
   width: 100%;
   height: 50px;
@@ -36,9 +36,8 @@ header {
 .homeBG {
   width: 100%;
   height: 500px;
-  margin: auto;
   background-size: cover;
-  background-image: url('http://daily.jstor.org/wp-content/uploads/2015/08/Solar_de_Uyuni_1050x700.jpg');
+  background-image: url('images/indonesia.jpg');
   background-repeat: no-repeat;
 }
 
@@ -65,20 +64,22 @@ h2 {
   font-weight: 100;
 }
 
-.form-container {
+.homeBG > .form-container {
   position: relative;
-  left: 150px;
+  display: inline-block;
+  text-align: center;
   width: 70%;
-  top: 150px;
+  top: 130px;
+  left: 155px;
   z-index: 100;
 }
 
 input {
-  min-width: 80%;
+  min-width: 70%;
   padding: 10px;
   outline: none;
   border: 1px solid #ccc;
-  background-color: rgba(255,255,255,.9);
+  background-color: rgba(255,255,255,.7);
   font-size: 30px;
   border-radius: 5px;
 }
@@ -86,7 +87,7 @@ input {
 button {
   min-width: 15%;
   padding: 10px;
-  background-color: rgba(255,255,255,.9);
+  background-color: rgba(255,255,255,.7);
   border: 1px solid #ccc;
   outline: none;
   font-size: 30px;
@@ -97,10 +98,6 @@ button:hover {
   background-color: #bfd328;
   color: #fff;
   border: 1px solid #8c9d1c;
-}
-
-img {
-  cursor: pointer;
 }
 
 #photos-container {
@@ -125,6 +122,7 @@ img {
   height: auto;
   margin: 6px;
   align-self: center;
+  cursor: pointer;
 }
 
 #photo-popup {
@@ -165,19 +163,124 @@ img {
   text-align: center;
   padding-top: 20px;
 }
-#photo-popup > #photo-desc {
-  background-color: #fff;
-  min-height: 500px;
-  margin-top: 20px;
-  padding: 20px;
-}
 
-#featured-container {
-  width: 90%;
-  text-align: center;
-  margin: auto;
-}
 
 header #logo {
   cursor: pointer;
+}
+
+.desc-container {
+  display:flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+#photo-desc {
+  background-color: #fff;
+  margin: 20px;
+  padding: 20px;
+  width: 50%;
+}
+
+#map {
+  width: 50%;
+  min-height: 100px;
+  background-color: rgba(255,255,255,0);
+  margin: 20px;
+  text-align: center;
+}
+
+#map img {
+  width: 100%;
+}
+
+.waiting {
+  display: block;
+  min-width: 400px;
+  position: relative;
+  font-size: 20px;
+  font-weight: 900;
+  color: #919191;
+  padding: 50px;
+
+  /*change color animation*/
+  animation-name: animate;
+  animation-duration: 1s;
+  animation-timing-function: ease;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+@keyframes animate {
+  from {color: #919191;}
+  to {color: #b7b7b7;}
+}
+
+
+#featured-container {
+  width: 100%;
+  text-align: center;
+}
+
+.featured-flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.featured-place {
+  min-width: 300px;
+  min-height: 300px;
+  background-color: red;
+  margin: 20px;
+
+}
+
+#peru{
+  background-image: url('images/peru.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 20%;
+  height: 20%;
+}
+
+#tokyo {
+  background-image: url('images/tokyo.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 20%;
+  height: 20%;
+}
+
+#bolivia {
+  background-image: url('images/bolivia.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 20%;
+  height: 20%;
+}
+
+#namibia {
+  background-image: url('images/namibia.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 20%;
+  height: 20%;
+}
+
+#iceland {
+  background-image: url('images/iceland.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 20%;
+  height: 20%;
+}
+
+#singapore {
+  background-image: url('images/singapore.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 20%;
+  height: 20%;
 }

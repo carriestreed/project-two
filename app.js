@@ -1,3 +1,6 @@
+//loader image from http://www.icbproperties.com/assets/img/loading.gif.pagespeed.ce.ma8Xt5OQ3G.gif
+
+
 document.addEventListener('DOMContentLoaded', function(event){
 
   //beginning on click event
@@ -12,13 +15,12 @@ document.addEventListener('DOMContentLoaded', function(event){
 
     //move form box to header & resize
     var moveInput = document.querySelector('.form-container');
-    moveInput.style.position = 'relative';
-    moveInput.style.top = '-55px';
-    moveInput.style.left = '0px';
-    moveInput.style.right = '10px';
-    moveInput.style.zIndex = '200';
-    moveInput.style.width = '96%';
+    moveInput.style.position = 'absolute';
     moveInput.style.textAlign = 'right';
+    moveInput.style.width = '70%';
+    moveInput.style.top = '-4px';
+    moveInput.style.right = '40px';
+    moveInput.zIndex = '100';
     document.querySelector('header').appendChild(moveInput);
 
     var inputAdj = document.querySelector('#user-search');
@@ -36,6 +38,13 @@ document.addEventListener('DOMContentLoaded', function(event){
 
     //hide featured galleries
     document.querySelector('#featured-container').style.display = 'none';
+
+    //gallery loading
+    document.querySelector('#photos-container').innerHTML =
+    '<div class="waiting" style="display:block;">'
+     + '"Not all who wander are lost..."'
+     +'</div>';
+
 
     //query for photo search
     $.ajax({ /* ajax call for search */
@@ -68,6 +77,7 @@ document.addEventListener('DOMContentLoaded', function(event){
   //generates popup window content
   function generateContent(el){
     console.log('passed in', el);
+
     var photoId = el[0].id;
 
     $.ajax({ /*ajax call for sizes*/
@@ -75,7 +85,7 @@ document.addEventListener('DOMContentLoaded', function(event){
       dataType: 'json',
       success: function(response){
 
-        //handlebars
+        //handlebars for popup window setup
         var source = document.querySelector('#popup-template').innerHTML;
         var template = Handlebars.compile(source);
         var templateContainer = document.querySelector('#photo-popup');
@@ -84,6 +94,22 @@ document.addEventListener('DOMContentLoaded', function(event){
 
         //displays popup window
         document.querySelector('#photo-popup').style.display = 'block';
+
+        //map loading
+        document.querySelector('#map').innerHTML =
+        "<p class='waiting' style='top:2em'>locating this photo on a map...</p>";
+
+        //description loading
+        document.querySelector('#photo-desc').innerHTML =
+        '<div style="display:block;">'
+         + 'A description to this sweet photo <em>should</em> load soon...'
+         + '<br><br>'
+         + "In the meantime, here's an inspirational quote from Mark Twain:"
+         + '<br><em>'
+         + '“Twenty years from now you will be more disappointed by the things you didn’t do than by the ones you did do."'
+         + '</em><br><br><strong>'
+         + 'Let that just sink in a moment.'
+         + '</strong></div>';
 
         //close window on click
         document.querySelector('span').addEventListener('click', function(){
@@ -98,19 +124,26 @@ document.addEventListener('DOMContentLoaded', function(event){
       dataType: 'json',
       success: function(response){
         console.log(response);
-        console.log(response.photo.description._content);
-        console.log(response.photo.title);
-        console.log(response.photo.owner);
-        console.log(response.photo.dates.taken);
 
-        //handlebars
+        //handlebars for description
         var source = document.querySelector('#photo-desc-temp').innerHTML;
         var template = Handlebars.compile(source);
         var templateContainer = document.querySelector('#photo-desc');
         var html = template(response.photo);
         templateContainer.innerHTML = html;
 
-      }//end success
+        //handlebars for map
+        var mapSource = document.querySelector('#map-temp').innerHTML;
+        console.log(mapSource);
+        var mapTemplate = Handlebars.compile(mapSource);
+        console.log(mapTemplate);
+        var mapTemplateContainer = document.querySelector('#map');
+        console.log(mapTemplateContainer);
+        var mapHTML = mapTemplate(response.photo);
+        console.log(mapHTML);
+        mapTemplateContainer.innerHTML = mapHTML;
+
+      } //end success
     });//end ajax call for descriptions
 
   }//end generate content function
@@ -123,7 +156,16 @@ document.addEventListener('DOMContentLoaded', function(event){
 
 //TODO
 //pause scrolling behind div popup window
+//display location on gallery photo results
 //attempt to connect google auto fill
 //geo tag photos onto a map
 //link to other tags on popup window
 //display amount of views
+//get external links to open in new tab
+//debug why description lags so much
+//enter to submit
+//click logo to reload, currently form blocks it
+//make popup responsive
+//randomize quotes that display upon waiting
+//fix text animation so color changes from left to right
+//work on image replacement for errors
