@@ -42,6 +42,13 @@ document.addEventListener('DOMContentLoaded', function(event){
     })//end click event
   }//end for loop
 
+ //  inputBox.addEventListener("keydown", function(e){ //help from kristyn!!!
+ //   if (e.keyCode == 13) {
+ //     e.preventDefault();
+ //     querySearch();
+ //   };
+ // });
+
   //query for photo search
   function querySearch(el){
     $.ajax({ /* ajax call for user search */
