@@ -3,7 +3,7 @@
 
 document.addEventListener('DOMContentLoaded', function(event){
 
-  //beginning on click event
+  //beginning user search on click event
   document.querySelector('#user-sub').addEventListener('click', function(){
 
     var userSearch = document.querySelector('#user-search');
@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function(event){
     moveInput.style.textAlign = 'right';
     moveInput.style.width = '70%';
     moveInput.style.top = '-4px';
-    moveInput.style.right = '40px';
+    moveInput.style.right = '20px';
     moveInput.zIndex = '100';
     document.querySelector('header').appendChild(moveInput);
 
@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function(event){
 
 
     //query for photo search
-    $.ajax({ /* ajax call for search */
+    $.ajax({ /* ajax call for user search */
       url: 'https://api.flickr.com/services/rest/?format=json&nojsoncallback=1&method=flickr.photos.search&api_key=' + API_KEY + '&sort=interestingness-desc&group_id=41425956%40N00&tags=' + userSearch.value,
       dataType: 'json',
       success: function(response){
@@ -72,6 +72,8 @@ document.addEventListener('DOMContentLoaded', function(event){
       }//end success
     })//end photo search ajax
   });//end click event
+
+
 
 
   //generates popup window content
@@ -102,7 +104,7 @@ document.addEventListener('DOMContentLoaded', function(event){
         //description loading
         document.querySelector('#photo-desc').innerHTML =
         '<div style="display:block;">'
-         + 'A description to this sweet photo <em>should</em> load soon...'
+         + 'A description for this sweet photo <em>should</em> load soon...'
          + '<br><br>'
          + "In the meantime, here's an inspirational quote from Mark Twain:"
          + '<br><em>'
@@ -156,16 +158,14 @@ document.addEventListener('DOMContentLoaded', function(event){
 
 //TODO
 //pause scrolling behind div popup window
-//display location on gallery photo results
 //attempt to connect google auto fill
-//geo tag photos onto a map
+//add photo markers on map
 //link to other tags on popup window
 //display amount of views
 //get external links to open in new tab
 //debug why description lags so much
 //enter to submit
-//click logo to reload, currently form blocks it
 //make popup responsive
+//make homepage responsive
 //randomize quotes that display upon waiting
 //fix text animation so color changes from left to right
-//work on image replacement for errors
