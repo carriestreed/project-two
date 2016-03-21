@@ -3,15 +3,79 @@
 
 document.addEventListener('DOMContentLoaded', function(event){
 
+  var userSearch;
+
   //beginning user search on click event
   document.querySelector('#user-sub').addEventListener('click', function(){
+    setupWindow();
+    userSearch = document.querySelector('#user-search').value;
+    querySearch(userSearch);
+  });//end click event
 
-    var userSearch = document.querySelector('#user-search');
+  //beginning featured gallery on click event
+  var featuredPlaces = document.querySelectorAll('.featured-place');
+  for (var i = 0; i < featuredPlaces.length; i++){
+    document.getElementById(featuredPlaces[i].id).addEventListener('click', function(that){
+      console.log(this);
+      console.log(this.id);
+      if (this.id === 'namibia'){
+        userSearch = 'namibia';
+      }
+      if (this.id === 'bolivia'){
+        userSearch = 'bolivia';
+      }
+      if (this.id === 'peru'){
+        userSearch = 'peru';
+      }
+      if (this.id === 'tokyo'){
+        userSearch = 'tokyo';
+      }
+      if (this.id === 'singapore'){
+        userSearch = 'singapore';
+      }
+      if (this.id === 'iceland'){
+        userSearch = 'iceland';
+      }
+      setupWindow();
+      querySearch(userSearch);
+    })//end click event
+  }//end for loop
+
+  //query for photo search
+  function querySearch(el){
+    $.ajax({ /* ajax call for user search */
+      url: 'https://api.flickr.com/services/rest/?format=json&nojsoncallback=1&method=flickr.photos.search&api_key=' + API_KEY + '&sort=interestingness-desc&group_id=41425956%40N00&tags=' + el,
+      dataType: 'json',
+      success: function(response){
+        console.log(response);
+
+        //handlebars
+        var source = document.querySelector('#photos-template').innerHTML;
+        var template = Handlebars.compile(source);
+        var templateContainer = document.querySelector('#photos-container');
+        var html = template(response.photos.photo);
+        templateContainer.innerHTML = html;
+
+        //click to expand
+        var photoLocation = response.photos.photo;
+        for (var i = 0; i < photoLocation.length; i++){
+          document.getElementById(photoLocation[i].id).addEventListener('click', function(){
+            var photoObject = [this];
+            generateContent(photoObject);
+          });//end click event
+        }//end for loop
+
+      }//end success
+    })//end photo search ajax
+  }
+
+  //sets up positioning for popup window
+  function setupWindow(){
 
     //click logo to reload
     document.querySelector('#logo').addEventListener('click', function(){
       location.reload();
-    });
+    }); //end click logo to reload
 
     //move form box to header & resize
     var moveInput = document.querySelector('.form-container');
@@ -44,39 +108,10 @@ document.addEventListener('DOMContentLoaded', function(event){
     '<div class="waiting" style="display:block;">'
      + '"Not all who wander are lost..."'
      +'</div>';
+   }//end popup window setup
 
 
-    //query for photo search
-    $.ajax({ /* ajax call for user search */
-      url: 'https://api.flickr.com/services/rest/?format=json&nojsoncallback=1&method=flickr.photos.search&api_key=' + API_KEY + '&sort=interestingness-desc&group_id=41425956%40N00&tags=' + userSearch.value,
-      dataType: 'json',
-      success: function(response){
-        console.log(response);
-
-        //handlebars
-        var source = document.querySelector('#photos-template').innerHTML;
-        var template = Handlebars.compile(source);
-        var templateContainer = document.querySelector('#photos-container');
-        var html = template(response.photos.photo);
-        templateContainer.innerHTML = html;
-
-        //click to expand
-        var photoLocation = response.photos.photo;
-        for (var i = 0; i < photoLocation.length; i++){
-          document.getElementById(photoLocation[i].id).addEventListener('click', function(){
-            var photoObject = [this];
-            generateContent(photoObject);
-          });//end click event
-        }//end for loop
-
-      }//end success
-    })//end photo search ajax
-  });//end click event
-
-
-
-
-  //generates popup window content
+  //generates content for popup window
   function generateContent(el){
     console.log('passed in', el);
 
@@ -147,7 +182,6 @@ document.addEventListener('DOMContentLoaded', function(event){
 
       } //end success
     });//end ajax call for descriptions
-
   }//end generate content function
 
 
