@@ -3,7 +3,9 @@
 
 document.addEventListener('DOMContentLoaded', function(event){
 
+  //global variable
   var userSearch;
+  /////////////////
 
   //beginning user search on click event
   document.querySelector('#user-sub').addEventListener('click', function(){
@@ -16,7 +18,6 @@ document.addEventListener('DOMContentLoaded', function(event){
   var featuredPlaces = document.querySelectorAll('.featured-place');
   for (var i = 0; i < featuredPlaces.length; i++){
     document.getElementById(featuredPlaces[i].id).addEventListener('click', function(that){
-      console.log(this);
       console.log(this.id);
       if (this.id === 'namibia'){
         userSearch = 'namibia';
@@ -139,7 +140,7 @@ document.addEventListener('DOMContentLoaded', function(event){
         //description loading
         document.querySelector('#photo-desc').innerHTML =
         '<div style="display:block;">'
-         + 'A description for this sweet photo <em>should</em> load soon...'
+         + 'A description for this sweeeet photo <em>should</em> load soon...'
          + '<br><br>'
          + "In the meantime, here's an inspirational quote from Mark Twain:"
          + '<br><em>'
