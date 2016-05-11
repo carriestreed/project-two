@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded', function(event){
 
   //global variable
   var userSearch;
-  KEY = process.env.FLICKR_KEY
   /////////////////
 
   //beginning user search on click event
@@ -50,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function(event){
   //query for photo search
   function querySearch(el){
     $.ajax({ /* ajax call for user search */
-      url: 'https://api.flickr.com/services/rest/?format=json&nojsoncallback=1&method=flickr.photos.search&api_key=' + KEY + '&sort=interestingness-desc&group_id=41425956%40N00&tags=' + el,
+      url: 'https://api.flickr.com/services/rest/?format=json&nojsoncallback=1&method=flickr.photos.search&api_key=' + process.env.FLICKR_KEY + '&sort=interestingness-desc&group_id=41425956%40N00&tags=' + el,
       dataType: 'json',
       success: function(response){
         console.log(response);
@@ -124,7 +123,7 @@ document.addEventListener('DOMContentLoaded', function(event){
     var photoId = el[0].id;
 
     $.ajax({ /*ajax call for sizes*/
-      url: 'https://api.flickr.com/services/rest/?format=json&nojsoncallback=1&method=flickr.photos.getSizes&api_key=' + KEY + '&photo_id=' + photoId,
+      url: 'https://api.flickr.com/services/rest/?format=json&nojsoncallback=1&method=flickr.photos.getSizes&api_key=' + process.env.FLICKR_KEY + '&photo_id=' + photoId,
       dataType: 'json',
       success: function(response){
 
@@ -163,7 +162,7 @@ document.addEventListener('DOMContentLoaded', function(event){
     });//end photo-size ajax call
 
     $.ajax({ /*ajax call for descriptions*/
-      url: 'https://api.flickr.com/services/rest/?format=json&nojsoncallback=1&method=flickr.photos.getInfo&api_key=' + KEY + '&photo_id=' + photoId,
+      url: 'https://api.flickr.com/services/rest/?format=json&nojsoncallback=1&method=flickr.photos.getInfo&api_key=' + process.env.FLICKR_KEY + '&photo_id=' + photoId,
       dataType: 'json',
       success: function(response){
         console.log(response);
