@@ -1,6 +1,8 @@
-var express = require('express'),
-    PORT    = process.env.PORT || 3000,
-    app     = express()
+require('dotenv').config();
+
+var express    = require('express'),
+    PORT       = process.env.PORT || 3000,
+    app        = express()
 
 app.use(express.static('./'))
 
