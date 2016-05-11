@@ -1,6 +1,3 @@
-//loader image from http://www.icbproperties.com/assets/img/loading.gif.pagespeed.ce.ma8Xt5OQ3G.gif
-
-
 document.addEventListener('DOMContentLoaded', function(event){
 
   //global variable
