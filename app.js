@@ -147,7 +147,7 @@ document.addEventListener('DOMContentLoaded', function(event){
         //description loading
         document.querySelector('#photo-desc').innerHTML =
         '<div style="display:block;">'
-         + 'A description for this sweeeet photo <em>should</em> load soon...'
+         + 'A description for this awesome photo <em>should</em> load soon...'
          + '<br><br>'
          + "In the meantime, here's an inspirational quote from Mark Twain:"
          + '<br><em>'

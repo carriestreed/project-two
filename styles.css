@@ -112,9 +112,9 @@ button:hover {
   -webkit-columns: 3 300px;
   -moz-columns: 3 300px;
   columns: 3 300px;
-  -webkit-column-gap: 1px;
-  -moz-column-gap: 1px;
-  column-gap: 1px;
+  -webkit-column-gap: 10px;
+  -moz-column-gap: 10px;
+  column-gap: 10px;
 }
 
 #photos-container > div {
