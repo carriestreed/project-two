@@ -19,5 +19,6 @@
   "homepage": "https://github.com/carriestreed/project-two#readme",
   "dependencies": {
     "express": "^4.13.4"
-  }
+  },
+  "devDependencies": {}
 }
